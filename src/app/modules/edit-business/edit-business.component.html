@@ -1,0 +1,104 @@
+<div class="card m-3 p-3 animated fadeInRight" *ngIf="negocio">
+    <div class="breadcrumb myClassDoc card-tittle">
+        <p><strong>Negocio</strong></p>
+        <ul>
+            <li>Edición de su actividad</li>
+            <li>Conozca a su competencia</li>
+        </ul>
+    </div>
+
+    <div class="separator-breadcrumb border-top"></div>
+
+    <div class="card mt-2">
+        <div class="row">
+            <div class="col">
+                <!--Aquí van los datos como nombre, actividad y dirección-->
+                <form #formBusiness="ngForm" (ngSubmit)="onSubmit()">
+                    <div class="card mb-1 mt-2" style="border: none">
+                        <div class="card-title mb-3"><strong>Datos principales de su actividad</strong></div>
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col-md-6 form-group mb-3">
+                                    <label for="name">Nombre</label>
+                                    <input type="text" name="name" class="form-control" #name="ngModel"
+                                        [(ngModel)]="negocio.name" required>
+                                    <small *ngIf="!name.valid && name.touched" class="invalid-feedback d-block">
+                                        El nombre no es válido
+                                    </small>
+                                </div>
+
+                                <div class="col-md-6 col-sm-12 form-group mb-3">
+                                    <label for="activity">Actividad</label>
+                                    <input type="text" name="activity" (ngModelChange)="bDirty=true"
+                                        class="form-control" #activity="ngModel" [(ngModel)]="negocio.activity">
+                                </div>
+
+                                <div class="col-md-6 col-sm-12 form-group mb-3">
+                                    <label for="description">Descripción</label>
+                                    <input type="text" name="description" (ngModelChange)="bDirty=true"
+                                        class="form-control" #description="ngModel" [(ngModel)]="negocio.description">
+                                </div>
+
+                                <div class="col-md-6 col-sm-12 form-group mb-3">
+                                    <label for="address">Dirección</label>
+                                    <input type="text" name="address" (ngModelChange)="bDirty=true" class="form-control"
+                                        #address="ngModel" [(ngModel)]="negocio.address">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="col-sm-12 col-md-6">
+                <div>
+                    <div class="card mt-2" style="border: none;">
+                        <div class="card-title mb-2"><strong>Datos referentes a su competencia</strong></div>
+                        <div class="card-body">
+                            <input style="width: 100%;" type="text" id="place" #search [formControl]="searchControl"
+                                placeholder="Conozca su competencia" autocomplete="off" autocapitalize="off"
+                                spellcheck="off">
+                        </div>
+                        <div>
+                            <agm-map [latitude]="latitude" [longitude]="longitude" [scrollwheel]="false" [zoom]="zoom"
+                                style="height: 240px;">
+                                <agm-marker *ngFor="let latlong of latlongs" [latitude]="latlong.latitude"
+                                    [longitude]="latlong.longitude"></agm-marker>
+                            </agm-map>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="mt-3">
+        <div class="float-left p-1">
+            <button class="btn btn-outline-danger" (click)="cancelar()" [routerLink]="['negocios']">Cancelar</button>
+        </div>
+        <div class="float-right p-1">
+            <button (click)="onSubmit()" class="btn btn-outline-primary">{{title}}</button>
+        </div>
+    </div>
+    <div class="row" *ngIf="locales">
+        <div class="card mb-1" style="border: none">
+            <div class="card-body">
+                <div class="card-title mb-3">Ha añadido a su negocio</div>
+                <div class="row">
+                    <div class="col form-group mb-3">
+                        <label>Locales</label>
+                        <!--Aquí un *ngFor de la NM de locales y negocio-->
+                    </div>
+
+                    <div class="col form-group mb-3">
+                        <label>Trabajadores</label>
+                        <!--Aquí un *ngFor de la NM de trabajadores y negocio-->
+                    </div>
+
+                    <div class="col form-group mb-3">
+                        <label>Inmovilizado</label>
+                        <!--Aquí un *ngFor de la NM de inmovilizado y negocio-->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

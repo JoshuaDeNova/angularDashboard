@@ -1,0 +1,81 @@
+<div class="card m-3 p-3 animated fadeInRight" *ngIf="trabajador">
+    <div class="breadcrumb myClassDoc card-tittle">
+        <p><strong>Trabajadores</strong></p>
+        <ul>
+            <li>Edición</li>
+        </ul>
+    </div>
+
+    <div class="separator-breadcrumb border-top"></div>
+
+    <div class="card mt-2">
+        <!--Aquí van los datos personales del trabajador-->
+        <form #formBusiness="ngForm" (ngSubmit)="onSubmit()">
+            <div class="row">
+                <div class="col-sm-12 col-md-6">
+                    <div class="card mb-1 mt-2" style="border: none">
+                        <div class="card-title mb-3 p-2"><strong>Datos principales del trabajador</strong></div>
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col-md-6 col-sm-12 form-group mb-3">
+                                    <label for="name">Nombre</label>
+                                    <input type="text" name="name" (ngModelChange)="bDirty=true" class="form-control"
+                                        #name="ngModel" [(ngModel)]="trabajador.name">
+                                </div>
+
+                                <div class="col-md-6 col-sm-12 form-group mb-3">
+                                    <label for="surname">Apellido</label>
+                                    <input type="text" name="surname" (ngModelChange)="bDirty=true" class="form-control"
+                                        #surname="ngModel" [(ngModel)]="trabajador.surname">
+                                </div>
+
+                                <div class="col-md-12 col-sm-12 form-group mb-3">
+                                    <label for="email">Email</label>
+                                    <input type="text" name="email" (ngModelChange)="bDirty=true" class="form-control"
+                                        #email="ngModel" [(ngModel)]="trabajador.email">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-12 col-md-6">
+                    <div class="card mb-1 mt-2" style="border: none">
+                        <div class="card-title mb-3 p-2"><strong>Datos referentes al contrato</strong></div>
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col-md-12 col-sm-12 form-group mb-3">
+                                    <label for="contractType">Tipo de contrato</label>
+                                    <input type="text" name="contractType" (ngModelChange)="bDirty=true"
+                                        class="form-control" #contractType="ngModel"
+                                        [(ngModel)]="trabajador.contractType">
+                                </div>
+
+                                <div class="col-md-6 col-sm-12 form-group mb-3">
+                                    <label for="workerPrice">Salario del trabajador</label>
+                                    <input type="number" name="workerPrice" (ngModelChange)="bDirty=true"
+                                        class="form-control" #workerPrice="ngModel"
+                                        [(ngModel)]="trabajador.workerPrice">
+                                </div>
+
+                                <div class="col-md-6 col-sm-12 form-group mb-3">
+                                    <label for="socialInsurance">Coste Seguridad Social</label>
+                                    <input type="number" name="socialInsurance" (ngModelChange)="bDirty=true"
+                                        class="form-control" #socialInsurance="ngModel"
+                                        [(ngModel)]="trabajador.socialInsurance">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+    <div class="mt-3">
+        <div class="float-left p-1">
+            <button class="btn btn-outline-danger" (click)="cancelar()" [routerLink]="['trabajadores']">Cancelar</button>
+        </div>
+        <div class="float-right p-1">
+            <button (click)="onSubmit()" class="btn btn-outline-primary">{{title}}</button>
+        </div>
+    </div>
+</div>

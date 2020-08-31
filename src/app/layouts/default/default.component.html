@@ -1,0 +1,23 @@
+<app-header (window:resize)="onResize($event)" (abreSidebarMenu)="menuControl()"></app-header>
+
+<mat-drawer-container *ngIf="bPixelsMobile">
+    <mat-drawer class="myStyleMobile" mode="side" [opened]="bSidebarOpen">
+        <app-sidebar-mobile></app-sidebar-mobile>
+    </mat-drawer>
+    <mat-drawer-content>
+
+        <router-outlet></router-outlet>
+    </mat-drawer-content>
+</mat-drawer-container>
+
+<mat-drawer-container *ngIf="!bPixelsMobile">
+    <mat-drawer class="myStyle" mode="side" [opened]="bSidebarOpen">
+        <app-sidebar></app-sidebar>
+    </mat-drawer>
+    <mat-drawer-content>
+
+        <router-outlet></router-outlet>
+    </mat-drawer-content>
+</mat-drawer-container>
+
+<app-footer></app-footer>

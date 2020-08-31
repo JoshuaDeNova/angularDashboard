@@ -1,0 +1,23 @@
+:host{
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+.myStyle{
+    width: 250px;
+    background-color: rgb(77, 70, 70) !important;
+}
+
+.myStyleMobile{
+    width: 60px;
+    background-color: rgb(77, 70, 70) !important;
+}
+
+mat-drawer-container{
+    height: 100%;
+}
+
+mat-drawer-content{
+    padding: 20px;
+}

@@ -1,0 +1,89 @@
+<!--FICHA NEGOCIOS-->
+<!--TITULO-->
+<div class="card m-3 p-3 animated fadeInRight" *ngIf="usuario">
+    <div class="breadcrumb myClassDoc card-tittle">
+        <p><strong>Mis Negocios</strong></p>
+        <ul>
+            <li>Administrar</li>
+        </ul>
+    </div>
+
+    <div class="separator-breadcrumb border-top"></div>
+
+    <!--INICIO TABLA-->
+    <div class="card m-2">
+        <div class="card-body">
+            <div class="card-title">Listado de negocios de autonomo</div>
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <input id="text" placeholder="Busqueda de Negocios..." [formControl]="searchControl"
+                            class="form-control form-control-rounded" type="text" #busqueda>
+                    </div>
+                </div>
+                <div class="col-md-8">
+                    <button _ngcontent-ulq-c11="" [routerLink]="['0/editar']"
+                        class="btn btn-outline-primary float-right">Añadir nuevo negocio</button>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12" (window:resize)="onResize($event)">
+                    <div class="card o-hidden">
+                        <ngx-datatable style="overflow-y:visible; box-shadow: none" class="material fullscreen"
+                            [columnMode]="'force'" [headerHeight]="50" [footerHeight]="50" [rowHeight]="'auto'"
+                            [messages]="miMensaje" [scrollbarH]="false" [rows]="negocios" (activate)="click($event)">
+                            <ngx-datatable-column name="name" class=".myHeaderClass">
+                                <ng-template let-column="column" let-sort="sortFn" ngx-datatable-header-template>
+                                    <span class="datatable-header-cell-wrapper">
+                                        <span class="datatable-header-cell-label draggable" (click)="sort()">
+                                            Nombre
+                                        </span>
+                                    </span>
+                                </ng-template>
+                            </ngx-datatable-column>
+                            <ngx-datatable-column name="address">
+                                <ng-template let-column="column" let-sort="sortFn" ngx-datatable-header-template>
+                                    <span class="datatable-header-cell-wrapper">
+                                        <span class="datatable-header-cell-label draggable" (click)="sort()">
+                                            Dirección
+                                        </span>
+                                    </span>
+                                </ng-template>
+                            </ngx-datatable-column>
+                            <ngx-datatable-column name="activity" *ngIf="!ocultaColumna">
+                                <ng-template let-value="value" let-column="column" let-sort="sortFn"
+                                    ngx-datatable-header-template>
+                                    <span class="datatable-header-cell-wrapper">
+                                        <span class="datatable-header-cell-label draggable" (click)="sort()">
+                                            Actividad
+                                        </span>
+                                    </span>
+                                </ng-template>
+                            </ngx-datatable-column>
+                            <ngx-datatable-column name="description" *ngIf="!ocultaColumna">
+                                <ng-template let-column="column" let-sort="sortFn" ngx-datatable-header-template>
+                                    <span class="datatable-header-cell-wrapper">
+                                        <span class="datatable-header-cell-label draggable" (click)="sort()">
+                                            Descripción
+                                        </span>
+                                    </span>
+                                </ng-template>
+                            </ngx-datatable-column>
+
+                            <ngx-datatable-footer>
+                                <ng-template ngx-datatable-footer-template let-rowCount="rowCount"
+                                    let-pageSize="pageSize" let-selectedCount="selectedCount" let-curPage="curPage"
+                                    let-offset="offset">
+                                    <div style="padding: 5px 10px">
+                                        <div>
+                                            Negocios: {{ rowCount }}
+                                        </div>
+                                    </div>
+                                </ng-template>
+                            </ngx-datatable-footer>
+                        </ngx-datatable>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--FIN DE TABLA-->

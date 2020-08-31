@@ -1,0 +1,77 @@
+<!--FORMULARIO DE REGISTRO Y MODIFICACION DE DATOS-->
+<div *ngIf="usuario">
+    <div class="card" style="border: none;">
+        <div class="card-body">
+            <form #formulario="ngForm" (ngSubmit)="onSubmit()">
+                <div class="card mb-1">
+                    <div class="card-body">
+                        <div class="card-title mb-3">Datos principales del Usuario</div>
+                        <div class="row">
+                            <div class="col-md-6 form-group mb-3">
+                                <label for="name">Nombre</label>
+                                <input type="text" name="name" class="form-control" #name="ngModel"
+                                    [(ngModel)]="usuario.name" required>
+                                <small *ngIf="!name.valid && name.touched" class="invalid-feedback d-block">
+                                    El nombre no es válido
+                                </small>
+                            </div>
+
+                            <div class="col-md-6 form-group mb-3">
+                                <label for="surname">Apellidos</label>
+                                <input type="text" name="surname" (ngModelChange)="bDirty=true" class="form-control"
+                                    #surname="ngModel" [(ngModel)]="usuario.surname">
+                            </div>
+
+                            <div class="col-md-6 form-group mb-3">
+                                <label for="address">Domicilio</label>
+                                <input type="text" name="address" (ngModelChange)="bDirty=true" class="form-control"
+                                    #address="ngModel" [(ngModel)]="usuario.address">
+                            </div>
+
+                            <div class="col-md-6 form-group mb-3">
+                                <label for="docType">Tipo de documentación</label>
+                                <select type="text" name="docType" class="form-control" #docType="ngModel"
+                                    [(ngModel)]="usuario.docType">
+                                    <option [ngValue]="true">Documentación Online</option>
+                                    <option [ngValue]="false">Documentación Presencial</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="card mb-1">
+                    <div class="card-body">
+                        <div class="card-title mb-3">Datos de acceso a la aplicación</div>
+                        <div class="row">
+                            <div class="col-md-6 form-group mb-3">
+                                <label for="email">Email</label>
+                                <input type="text" name="email" class="form-control" #email="ngModel"
+                                    [(ngModel)]="usuario.email" required
+                                    pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$">
+                                <small *ngIf="!email.valid && email.touched" class="invalid-feedback d-block">
+                                    El email no es válido
+                                </small>
+                            </div>
+
+                            <div class="col-md-6 form-group mb-3">
+                                <label for="password">Contraseña</label>
+                                <input type="password" class="form-control fastlogin no-spinners" name="password"
+                                    #password="ngModel" [(ngModel)]="usuario.password">
+                                <small *ngIf="!password.valid && password.touched" class="invalid-feedback d-block">
+                                    La contraseña de acceso rápido no es válida
+                                </small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </form>
+            <div class="float-left p-1">
+                <button class="btn btn-outline-danger" (click)="cancelar()" [routerLink]="['/']">Cancelar</button>
+            </div>
+            <div class="float-right p-1">
+                <button type="submit" (click)="onSubmit()" class="btn btn-outline-primary">{{tittle}}</button>
+            </div>
+        </div>
+    </div>
+</div>
+<!--FIN FORMULARIO DE REGISTRO Y MODIFICACION DE DATOS-->

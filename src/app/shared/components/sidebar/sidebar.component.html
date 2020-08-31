@@ -1,0 +1,53 @@
+<mat-nav-list>
+  <div class="profile-card" *ngIf="usuario">
+    <div class="header">
+      <h5>{{usuario.name}} {{usuario.surname}}</h5>
+      <h6>{{usuario.email}}</h6>
+    </div>
+  </div>
+
+  <mat-divider></mat-divider>
+
+  <a mat-list-item routerLinkActive="list-item-active" routerLink="/">Home</a>
+
+  <a mat-list-item routerLinkActive="list-item-active" (click)="bHijo = !bHijo">Comienza a emprender</a>
+
+  <ul *ngIf="bHijo" class="animated fadeInLeft">
+    <li><a mat-list-item routerLinkActive="list-item-active" routerLink="/documentacion">Documentación a aportar</a></li>
+    <li><a mat-list-item routerLinkActive="list-item-active" routerLink="/negocios">Administrar negocios</a></li>
+  </ul>
+
+  <a mat-list-item routerLinkActive="list-item-active" (click)="bHijo2 = !bHijo2">Almacén de datos</a>
+
+  <ul *ngIf="bHijo2" class="animated fadeInLeft">
+    <li><a mat-list-item routerLinkActive="list-item-active" routerLink="/locales">Local de negocio</a></li>
+    <li><a mat-list-item routerLinkActive="list-item-active" routerLink="/trabajadores">Sobre sus trabajadores</a></li>
+    <li><a mat-list-item routerLinkActive="list-item-active" routerLink="/inmovilizados">Inmovilizado material</a></li>
+  </ul>
+
+  <a mat-list-item routerLinkActive="list-item-active" (click)="bHijo3 = !bHijo3">Información general</a>
+
+  <ul *ngIf="bHijo3" class="animated fadeInLeft">
+    <li><a mat-list-item routerLinkActive="list-item-active" routerLink="/">Gestorías cercanas</a></li>
+    <li><a mat-list-item routerLinkActive="list-item-active" routerLink="/">Calendario de impuestos</a></li>
+  </ul>
+
+  <a mat-list-item routerLinkActive="list-item-active" routerLink="/">Presupuesto aproximado</a>
+
+  <mat-divider></mat-divider>
+
+  <!--<a mat-list-item routerLinkActive="list-item-active" routerLink="/contacts">
+        <mat-icon>import_contacts</mat-icon>
+        Contacts
+    </a>
+
+    <a mat-list-item routerLinkActive="list-item-active" routerLink="/contacts">
+        <mat-icon>contact_phone</mat-icon>
+        Leads
+    </a>-->
+
+</mat-nav-list>
+
+<!--    <h2 matSubheader>Burocracia</h2>
+
+-->

@@ -1,0 +1,86 @@
+<div *ngIf="usuario" class="card m-3 p-3 animated fadeInRight">
+    <div class="breadcrumb myClassDoc card-tittle">
+        <p><strong>Mi Negocio</strong></p>
+        <ul>
+            <li>Seguimiento del proceso emprendedor</li>
+            <li>Guia</li>
+        </ul>
+    </div>
+
+    <div class="separator-breadcrumb border-top"></div>
+
+    <div class="row">
+        <div class="col">
+            <div class="card m-1 p-1" style="border: none">
+                <div class="card-tittle"><strong>Documentación para iniciar su actividad</strong></div>
+                <div class="card-body">
+                    <div class="myClassInfo p-1">
+                        <small>Una vez dada de alta una actividad, solo deberá actualizar su modelo 036
+                            para dar de alta, baja o modificación de alguna actividad.
+                        </small>
+                    </div>
+                    <ngb-accordion *ngFor="let document of documentacion"
+                        #acc="ngbAccordion" activeIds="ngb-panel-0">
+                        <ngb-panel title="{{document.name}}">
+                            <ng-template ngbPanelContent>
+                                <div class="text-justify myClassDescription">
+                                    {{document.description}}
+                                </div>
+                                <div class="float-left mt-4 myClassDescription">
+                                    {{document.linkA}}
+                                </div>
+                            </ng-template>
+                        </ngb-panel>
+                    </ngb-accordion>
+                </div>
+            </div>
+        </div>
+        <div class="col">
+            <div class="card m-1 p-1" style="border: none">
+                <div class="card-tittle"><strong>Proceso para poder contratar trabajadores</strong></div>
+                <div class="card-body">
+                    <div class="myClassInfo p-1">
+                        <small>Solo debe realizar este proceso una vez para cada negocio si quiere contratar trabajadores
+                        </small>
+                    </div>
+                    <ngb-accordion style="width: auto; height: 20px;" *ngFor="let contrato of docPoderContratar"
+                        #acc="ngbAccordion" activeIds="ngb-panel-0">
+                        <ngb-panel title="{{contrato.name}}">
+                            <ng-template ngbPanelContent>
+                                <div class="text-justify myClassDescription">
+                                    {{contrato.description}}
+                                </div>
+                                <div class="float-left mt-4 myClassDescription">
+                                    {{contrato.linkA}}
+                                </div>
+                            </ng-template>
+                        </ngb-panel>
+                    </ngb-accordion>
+                </div>
+            </div>
+            <div class="card m-1 p-1" style="border: none">
+                <div class="card-tittle"><strong>Proceso por cada trabajador a realizar</strong></div>
+                <div class="card-body">
+                    <div class="myClassInfo p-1">
+                        <small>Debe realizar este proceso por cada trabajador que contrate
+                        </small>
+                    </div>
+                    <ngb-accordion style="width: auto; height: 20px;" *ngFor="let trabajador of docTrabajadores"
+                        #acc="ngbAccordion" activeIds="ngb-panel-0">
+                        <ngb-panel title="{{trabajador.name}}">
+                            <ng-template ngbPanelContent>
+                                <div class="text-justify myClassDescription">
+                                    {{trabajador.description}}
+                                </div>
+                                <div class="float-left mt-4 myClassDescription">
+                                    {{trabajador.linkA}}
+                                </div>
+                            </ng-template>
+                        </ngb-panel>
+                    </ngb-accordion>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>

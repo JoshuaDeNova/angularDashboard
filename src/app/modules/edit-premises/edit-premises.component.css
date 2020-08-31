@@ -1,0 +1,13 @@
+.myClassDoc{
+    background-color:transparent !important;
+    height: 45px;
+}
+
+input{
+    border-radius: 20px;
+}
+
+label{
+    font-size: 12px;
+    font-family: 'Playfair Display', serif;
+}

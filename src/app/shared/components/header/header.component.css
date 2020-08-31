@@ -1,0 +1,24 @@
+ul li{
+    list-style: none;
+}
+
+mat-toolbar{
+    background-color: rgb(194, 241, 255);
+}
+
+.modal-body{
+    background-image: url("../../../../assets/images/ciudad.jpg");
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+}
+
+.modal-header{
+    font-family: 'Playfair Display', serif;
+    font-size: 20px !important;
+    height: 40px;
+}
+
+.myClassModal{
+    height: 480px !important;
+    font-family: 'Playfair Display', serif;
+}

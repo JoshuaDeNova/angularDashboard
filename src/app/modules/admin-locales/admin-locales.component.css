@@ -1,0 +1,29 @@
+.myClassDoc{
+    background-color:transparent !important;
+    height: 45px;
+}
+
+span{
+    font-size: 12px !important;
+}
+
+.form-rounded {
+    border-radius: 1rem !important;
+}
+
+#text{
+    border-radius: 20px;
+}
+
+input {
+    font-size: 0.9em;
+}
+
+ngx-datatable {
+    cursor: pointer;
+}
+
+ngx-datatable {
+    max-height: 70vh;
+    overflow-y: scroll;
+}
